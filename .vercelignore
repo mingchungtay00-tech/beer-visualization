@@ -1,0 +1,17 @@
+.review-frames/
+.wrangler/
+dist/
+node_modules/
+/*.jpg
+/*.png
+public/assets/beer-source/
+public/assets/beer-video/source/
+public/assets/beer-video/glass/
+public/assets/beer-video/processed/body-glass-v1.mp4
+public/assets/beer-video/processed/body-glass-v1.webp
+public/assets/beer-video/processed/body-hybrid-d-v1.mp4
+public/assets/beer-video/processed/body-hybrid-d-v1.webp
+public/assets/beer-video/processed/body-idle.mp4
+public/assets/beer-video/processed/body-poster.webp
+public/assets/beer-video/processed/foam-idle-packed.mp4
+public/assets/beer-video/processed/foam-poster.webp
