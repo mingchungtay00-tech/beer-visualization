@@ -274,7 +274,7 @@ function App() {
   const markReady = useCallback((layer) => {
     readyRef.current[layer] = true;
 
-    if (Object.values(readyRef.current).every(Boolean)) {
+    if (readyRef.current.body && readyRef.current.foam) {
       beerBodyRef.current?.play().catch(() => {});
       foamSurfaceRef.current?.play().catch(() => {});
       setDisplayState((current) =>
@@ -397,7 +397,8 @@ function App() {
           tabIndex="-1"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
-          onCanPlayThrough={() => markReady('body')}
+          onLoadedData={() => markReady('body')}
+          onCanPlay={() => markReady('body')}
         />
       </div>
 
@@ -414,7 +415,8 @@ function App() {
           tabIndex="-1"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
-          onCanPlayThrough={() => markReady('foam')}
+          onLoadedData={() => markReady('foam')}
+          onCanPlay={() => markReady('foam')}
         />
 
         <video
@@ -427,7 +429,8 @@ function App() {
           tabIndex="-1"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
-          onCanPlayThrough={() => markReady('impact')}
+          onLoadedData={() => markReady('impact')}
+          onCanPlay={() => markReady('impact')}
           onEnded={handleImpactEnded}
         />
       </div>
