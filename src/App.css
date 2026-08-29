@@ -1,0 +1,308 @@
+:root {
+  color-scheme: dark;
+  background: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.beer-display {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.beer-display.is-cursor-hidden,
+.beer-display.is-cursor-hidden * {
+  cursor: none !important;
+}
+
+.beer-body-viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  clip-path: inset(var(--body-clip-top) 0 0 0);
+  will-change: clip-path;
+  contain: layout paint;
+}
+
+.beer-body-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-user-drag: none;
+}
+
+.foam-band {
+  position: absolute;
+  top: var(--foam-y);
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: var(--foam-band-height);
+  overflow: hidden;
+  opacity: 1;
+  transform: translate3d(0, calc(-50% + var(--foam-band-offset-y)), 0);
+  will-change: top;
+  contain: layout paint;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 68%,
+    rgba(0, 0, 0, 0.9) 72%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 68%,
+    rgba(0, 0, 0, 0.9) 72%,
+    transparent 100%
+  );
+}
+
+.foam-video {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-user-drag: none;
+}
+
+.foam-surface-video {
+  transform: translate3d(0, calc(-50% + var(--foam-source-offset-y)), 0);
+}
+
+.foam-impact-video {
+  transform: translate3d(0, calc(-50% + var(--impact-source-offset-y)), 0);
+}
+
+.foam-video.is-visible {
+  opacity: 1;
+}
+
+.is-loading .beer-body-viewport,
+.is-loading .foam-band {
+  opacity: 0;
+}
+
+.ending-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 5vw;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.56);
+  contain: layout paint;
+}
+
+.ending-overlay.is-active {
+  visibility: visible;
+  animation: ending-overlay-sequence var(--ending-duration-ms) linear both;
+}
+
+.ending-logo {
+  display: block;
+  width: min(88vw, 950px);
+  max-width: 100%;
+  max-height: 72dvh;
+  object-fit: contain;
+  opacity: 0;
+  transform: translate3d(0, 26px, 0) scale(0.82);
+  transform-origin: center center;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  -webkit-user-drag: none;
+}
+
+.ending-overlay.is-active .ending-logo {
+  animation:
+    ending-logo-sequence var(--ending-duration-ms) cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    ending-logo-pulse 3200ms var(--ending-duration-ms) ease-in-out infinite;
+}
+
+@keyframes ending-overlay-sequence {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ending-logo-sequence {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0) scale(0.82);
+    filter: brightness(0.82) drop-shadow(0 0 0 rgba(255, 184, 34, 0));
+  }
+
+  7% {
+    opacity: 1;
+    transform: translate3d(0, -7px, 0) scale(1.035);
+    filter: brightness(1.12) drop-shadow(0 0 34px rgba(255, 181, 28, 0.72));
+  }
+
+  14% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(1.02) drop-shadow(0 0 24px rgba(255, 176, 20, 0.52));
+  }
+
+  48% {
+    opacity: 1;
+    transform: translate3d(0, -1px, 0) scale(1.006);
+    filter: brightness(1.07) drop-shadow(0 0 31px rgba(255, 187, 44, 0.62));
+  }
+
+  76% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(1.02) drop-shadow(0 0 24px rgba(255, 176, 20, 0.52));
+  }
+
+  90% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(1.04) drop-shadow(0 0 27px rgba(255, 183, 30, 0.56));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(1.03) drop-shadow(0 0 25px rgba(255, 180, 24, 0.54));
+  }
+}
+
+@keyframes ending-logo-pulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: brightness(1.03) drop-shadow(0 0 25px rgba(255, 180, 24, 0.54));
+  }
+
+  50% {
+    transform: translate3d(0, -1px, 0) scale(1.004);
+    filter: brightness(1.07) drop-shadow(0 0 31px rgba(255, 188, 42, 0.62));
+  }
+}
+
+.debug-panel {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 10;
+  width: min(380px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+  padding: 14px;
+  color: #f6f6f6;
+  background: rgba(12, 12, 12, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(12px);
+  user-select: none;
+  touch-action: auto;
+}
+
+.debug-panel__header,
+.debug-control > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.debug-panel__header {
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.debug-panel__header span,
+.debug-control output {
+  color: #ffd07a;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.debug-control {
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.debug-control input {
+  width: 100%;
+  margin: 0;
+  accent-color: #e6a126;
+}
