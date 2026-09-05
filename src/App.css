@@ -162,12 +162,12 @@ input {
 
 .ending-logo {
   display: block;
-  width: min(88vw, 950px);
+  width: min(96vw, 1040px);
   max-width: 100%;
   max-height: 72dvh;
   object-fit: contain;
   opacity: 0;
-  transform: translate3d(0, 26px, 0) scale(0.82);
+  transform: translate3d(0, 0, 0) scale(0.15);
   transform-origin: center center;
   backface-visibility: hidden;
   will-change: transform, opacity, filter;
@@ -201,44 +201,33 @@ input {
 @keyframes ending-logo-sequence {
   0% {
     opacity: 0;
-    transform: translate3d(0, 26px, 0) scale(0.82);
-    filter: brightness(0.82) drop-shadow(0 0 0 rgba(255, 184, 34, 0));
+    transform: translate3d(0, 0, 0) scale(0.15);
+    filter: brightness(0.75) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 
   7% {
     opacity: 1;
-    transform: translate3d(0, -7px, 0) scale(1.035);
-    filter: brightness(1.12) drop-shadow(0 0 34px rgba(255, 181, 28, 0.72));
+    transform: translate3d(0, 0, 0) scale(0.72);
+    filter: brightness(1.08) drop-shadow(0 0 18px rgba(255, 255, 255, 0.38));
   }
 
-  14% {
+  12% {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: brightness(1.02) drop-shadow(0 0 24px rgba(255, 176, 20, 0.52));
+    transform: translate3d(0, 0, 0) scale(1.08);
+    filter: brightness(1.16) drop-shadow(0 0 34px rgba(255, 255, 255, 0.58));
   }
 
-  48% {
+  16% {
     opacity: 1;
-    transform: translate3d(0, -1px, 0) scale(1.006);
-    filter: brightness(1.07) drop-shadow(0 0 31px rgba(255, 187, 44, 0.62));
+    transform: translate3d(0, 0, 0) scale(0.97);
+    filter: brightness(1.04) drop-shadow(0 0 22px rgba(255, 255, 255, 0.42));
   }
 
-  76% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: brightness(1.02) drop-shadow(0 0 24px rgba(255, 176, 20, 0.52));
-  }
-
-  90% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: brightness(1.04) drop-shadow(0 0 27px rgba(255, 183, 30, 0.56));
-  }
-
+  20%,
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
-    filter: brightness(1.03) drop-shadow(0 0 25px rgba(255, 180, 24, 0.54));
+    filter: brightness(1.04) drop-shadow(0 0 24px rgba(255, 255, 255, 0.46));
   }
 }
 
@@ -246,12 +235,12 @@ input {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
-    filter: brightness(1.03) drop-shadow(0 0 25px rgba(255, 180, 24, 0.54));
+    filter: brightness(1.04) drop-shadow(0 0 24px rgba(255, 255, 255, 0.46));
   }
 
   50% {
     transform: translate3d(0, -1px, 0) scale(1.004);
-    filter: brightness(1.07) drop-shadow(0 0 31px rgba(255, 188, 42, 0.62));
+    filter: brightness(1.09) drop-shadow(0 0 31px rgba(255, 255, 255, 0.56));
   }
 }
 

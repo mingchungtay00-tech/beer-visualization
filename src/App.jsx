@@ -13,7 +13,7 @@ const VIDEO_SOURCE = {
   impact: '/videos/foam_impact(1).mp4',
 };
 
-const ENDING_LOGO_SOURCE = '/images/golden-kirin-ending-logo.png';
+const ENDING_LOGO_SOURCE = '/images/mbor.png';
 
 const easeOutCubic = (progress) => 1 - ((1 - progress) ** 3);
 
