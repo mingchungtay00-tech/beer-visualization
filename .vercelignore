@@ -2,6 +2,8 @@
 .wrangler/
 dist/
 node_modules/
+Baseline/
+public/images/clientbeer.gif
 /*.jpg
 /*.png
 public/assets/beer-source/
